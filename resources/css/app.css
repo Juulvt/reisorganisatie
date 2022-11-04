@@ -1,0 +1,155 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, body {
+    font-family: "poppins", sans-serif!important;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+.btn.primary {
+    background-color: #47a3ff;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.btn.primary:hover {
+    background-color: #529FEC;
+    color: #FFF;
+}
+
+.btn.secondary {
+    background-color: #3E557E;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.btn.secondary:hover {
+    background-color: #5471A2;
+    color: #FFF;
+}
+
+.container {
+    padding: 0 10rem!important;
+}
+
+nav {
+    background-color: #47A3FF;
+    color: #FFF;
+    position: relative;
+    z-index: 10;
+}
+
+footer {
+    background-color: #47A3FF;
+    color: #FFF;
+}
+
+footer a {
+    color: #FFF;
+}
+
+.footer-extend {
+    background-color: #2C8FF2;
+    color: #FFF;
+}
+
+.footer-extend a {
+    margin-right: 2rem;
+}
+
+.logo {
+    display: inline-block;
+}
+
+nav a, nav button {
+    color: #FFF;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.dropdown-content {
+    width: 200px;
+    height: fit-content;
+    padding: 1em;
+    background-color: #FFF;
+    color: #000;
+    text-align: center;
+}
+
+.dropdown-content h4 {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.dropdown-content a{
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.dropdown-content button {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.about-container {
+    padding: 4rem 0;
+}
+
+.about-container:first-child {
+    padding-top: 8rem;
+}
+
+.about-container:last-child {
+    padding-bottom: 8rem;
+}
+
+.contact-info {
+    background-color: #e9eff5;
+}
+
+.socials i {
+    font-size: 20px;
+    margin-right: 1em;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: .3em;
+}
+
+textarea, input {
+    width: 100%;
+    padding: .5em 1em;
+    border-radius: .2rem;
+}
+
+input[type="submit"] {
+    display: block;
+    width: fit-content;
+    background-color: #2C8FF2;
+    padding: 1em 2em;
+    border-radius: .6rem;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.image-container {
+    position: relative;
+    display: block;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.image-container img {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    left: 0;
+    top: 0;
+}
