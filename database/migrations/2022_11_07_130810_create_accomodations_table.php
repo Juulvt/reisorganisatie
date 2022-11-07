@@ -21,7 +21,6 @@ return new class extends Migration
             $table->tinyInteger('min_amount_visitors');
             $table->tinyInteger('max_amount_visitors');
             $table->unsignedDecimal('cost', $precision = 8, $scale = 2);
-            $table->foreignId('location_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

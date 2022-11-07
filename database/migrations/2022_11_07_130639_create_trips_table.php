@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 32);
             $table->string('description', 2048);
-            $table->foreignId('accomodation_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

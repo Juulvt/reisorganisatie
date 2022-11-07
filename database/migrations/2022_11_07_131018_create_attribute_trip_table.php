@@ -14,10 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('attribute_trip', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('attribute_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('trip_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->timestamps();
         });
     }
 

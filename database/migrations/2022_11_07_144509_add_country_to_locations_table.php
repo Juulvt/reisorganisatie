@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('image_location', function (Blueprint $table) {
-            $table->foreignId('image_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('location_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->tinyInteger('order');
+        Schema::table('locations', function (Blueprint $table) {
+            $table->foreignId('country_id')->nullable()->constrained()->nullOnDelete();
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_location');
+        Schema::table('locations', function (Blueprint $table) {
+            //
+        });
     }
 };
