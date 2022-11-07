@@ -22,7 +22,6 @@ return new class extends Migration
             $table->tinyInteger('max_amount_visitors');
             $table->unsignedDecimal('cost', $precision = 8, $scale = 2);
             $table->foreignId('location_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('accomodation_type_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accomodation');
+        Schema::dropIfExists('accomodations');
     }
 };
