@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Country;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Location>
@@ -17,13 +18,9 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->sentence(),
-            'country' => $this->faker->country(),
-            'type' => 'Hotel',
-            'description' => $this->faker->realText($maxNbChars = 50),
-            'max_amount_visitors' => $this->faker->numberBetween(1,10),
-            'is_available' => true,
-            'image_path' => $this->faker->imageUrl(640,480)
+            'name' => $this->faker->unique()->name(),
+            'description' => $this->faker->unique()->text(),
+            'country_id' => Country::inRandomOrder()->first()->id
         ];
     }
 }

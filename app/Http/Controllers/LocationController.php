@@ -17,7 +17,7 @@ class LocationController extends Controller
     {
         $locations = Location::orderBy('updated_at', 'desc')->get();
 
-        return view('reis.index', [
+        return view('location.index', [
             'locations' => $locations
         ]);
     }
@@ -52,7 +52,7 @@ class LocationController extends Controller
     public function show($id = 1)
     {
         $location = Location::findOrFail($id);
-        return view('reis.show', [
+        return view('location.show', [
             'location' => $location
         ]);
     }
