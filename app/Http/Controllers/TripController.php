@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trip;
+use App\Models\Country;
+use App\Models\Type;
 
 class TripController extends Controller
 {
@@ -15,9 +17,13 @@ class TripController extends Controller
     public function index()
     {
         $trips = Trip::orderBy('updated_at', 'desc')->get();
+        $countries = Country::get();
+        $types = Type::get();
 
         return view('index', [
-            'trips' => $trips
+            'trips' => $trips,
+            'countries' => $countries,
+            'types' => $types
         ]);
     }
 

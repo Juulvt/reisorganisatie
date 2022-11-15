@@ -11,14 +11,13 @@ use Database\Factories\TripFactory;
 use App\Models\Location;
 use App\Models\Trip;
 use App\Models\Accomodation;
-use App\Models\AccomodationType;
+use App\Models\Type;
 use App\Models\Attribute;
 use App\Models\AttributeTrip;
 use App\Models\Country;
 use App\Models\Image;
 use App\Models\ImageLocation;
 use App\Models\ImageTrip;
-use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -31,7 +30,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AccomodationTypeTableSeeder::class);
+        $this->call(TypesTableSeeder::class);
         $this->call(AttributesTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         $this->call(ImagesTableSeeder::class);

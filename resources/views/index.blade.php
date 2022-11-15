@@ -12,7 +12,15 @@
 <div class="container mx-auto px-50 mb-5 margin-negative-3">
     <div class="flex justify-between items-center flex-wrap gap-5 bg-white rounded-xl relative px-6 py-4">
         <div class="flex-1">
-            <label>Where do you want to go?</label>
+            <label>Country</label>
+                <select class="rounded" name="location" id="location">
+                    @foreach ($countries as $country)
+                    <option value="Nederland">{{$country->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="flex-1">
+                <label>Type of accomodation</label>
                 <select class="rounded" name="location" id="location">
                     <option value="Nederland">Nederland</option>
                     <option value="Duitsland">Duitsland</option>
@@ -21,16 +29,7 @@
                 </select>
             </div>
             <div class="flex-1">
-                <label>Where do you want to go?</label>
-                <select class="rounded" name="location" id="location">
-                    <option value="Nederland">Nederland</option>
-                    <option value="Duitsland">Duitsland</option>
-                    <option value="Frankrijk">Frankrijk</option>
-                    <option value="Spanje">Spanje</option>
-                </select>
-            </div>
-            <div class="flex-1">
-                <label>Where do you want to go?</label>                    
+                <label>When do you want to go?</label>                    
                 <select class="rounded" name="location" id="location">
                     <option value="Nederland">Nederland</option>
                     <option value="Duitsland">Duitsland</option>
@@ -47,17 +46,17 @@
 <div class="container mx-auto px-50 my-5">
     <div class="grid grid-cols-3 gap-x-3 gap-y-8">
         @foreach ($trips as $trip)
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div>
+        <div class="flex flex-col justify-between bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="flex-none">
                 <img class="rounded-lg" src="./images/locations/amsterdam.jpg">
             </div>
-            <div class="flex flex-col justify-between p-3">
+            <div class="flex-1 flex flex-col justify-between p-3">
                 <div class="flex-1">
                     <h4 class="text-lg">{{ $trip->name }}<h4>
                     <ul class="p-0">
-                        <li class="text-sm">Awesome view</li>
-                        <li class="text-sm">Close to city</li>
-                        <li class="text-sm">Nice food</li>
+                        @foreach($trip->attributes->slice(0, 3) as $attribute)
+                        <li class="text-sm">{{$attribute->description}}</li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="flex-none">

@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\location;
-use App\Models\AccomodationType;
+use App\Models\Type;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,7 +26,7 @@ class AccomodationFactory extends Factory
             'max_amount_visitors' => rand(1,10),
             'cost' => (rand(10000,100000) / 100),
             'location_id' => Location::inRandomOrder()->first()->id,
-            'accomodation_type_id' => AccomodationType::inRandomOrder()->first()->id
+            'type_id' => Type::inRandomOrder()->first()->id
         ];
     }
 }

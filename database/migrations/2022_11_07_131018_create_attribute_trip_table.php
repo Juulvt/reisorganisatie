@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attribute_trips', function (Blueprint $table) {
+        Schema::create('attribute_trip', function (Blueprint $table) {
             $table->foreignId('attribute_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('trip_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attribute_trips');
+        Schema::dropIfExists('attribute_trip');
     }
 };

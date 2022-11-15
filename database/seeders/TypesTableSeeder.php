@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\AccomodationType;
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AccomodationTypeTableSeeder extends Seeder
+class TypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -31,7 +31,7 @@ class AccomodationTypeTableSeeder extends Seeder
         ];
 
         foreach($types as $key => $value) {
-            AccomodationType::create($value);
+            Type::create($value);
         }
     }
 }
