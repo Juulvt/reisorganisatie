@@ -30,16 +30,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //$trips = DB::table('trips')->pluck('id');
+        //$attributes = DB::table('attributes')->pluck('id');
+
+        
+
         $this->call(TypesTableSeeder::class);
         $this->call(AttributesTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         $this->call(ImagesTableSeeder::class);
-
+        
         Location::factory(10)->create();
         Accomodation::factory(10)->create();
         Trip::factory(10)->create();
+
         ImageLocation::factory(40)->create();
         ImageTrip::factory(40)->create();
-        AttributeTrip::factory(40)->create();
+        
+        $attributes = Attribute::all();
+        Trip::all()->each(function ($trip) use ($attributes) {
+            $trip->attributes()->attach(
+                $attributes->random(3)->pluck('id')->toArray()
+            );
+        });
     }
 }

@@ -56,9 +56,14 @@ class TripController extends Controller
      */
     public function show($id)
     {
+        $countries = Country::get();
+        $types = Type::get();
         $trip = Trip::findOrFail($id);
-        return view('index.show', [
-            'trip' => $trip
+        return view('show', [
+            'trip' => $trip,
+            'countries' => $countries,
+            'types' => $types
+            
         ]);
     }
 

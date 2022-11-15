@@ -10,11 +10,15 @@ class Accomodation extends Model
 {
     use HasFactory;
 
-    public function location() {
-        return $this->hasOne(Location::class);
+    public function trip() {
+        return $this->hasOne(Trip::class);
     }
 
-    public function types() {
-        return $this->belongsToMany(Type::class);
+    public function location() {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function type() {
+        return $this->belongsTo(Type::class);
     }
 }

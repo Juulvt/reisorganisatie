@@ -18,6 +18,7 @@ class AttributeTripFactory extends Factory
      */
     public function definition()
     {
+
         return [
             'trip_id' => Trip::inRandomOrder()->first()->id,
             'attribute_id' => Attribute::inRandomOrder()->first()->id

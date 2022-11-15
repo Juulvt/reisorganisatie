@@ -12,7 +12,7 @@ class Trip extends Model
     use HasFactory;
 
     public function accomodation() {
-        return $this->hasOne(Accomodation::class);
+        return $this->belongsTo(Accomodation::class);
     }
 
     public function attributes() {
