@@ -1,4 +1,4 @@
-<nav>
+<nav class="main-background">
     <div class="container mx-auto flex justify-between gap-1 h-24 py-4">
         <div class="flex-1 max-h-full relative flex items-center">
             <a class="logo h-full" href={{ route('index.index') }}>

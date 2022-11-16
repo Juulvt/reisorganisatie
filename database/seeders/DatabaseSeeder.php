@@ -45,12 +45,22 @@ class DatabaseSeeder extends Seeder
         Trip::factory(10)->create();
 
         ImageLocation::factory(40)->create();
-        ImageTrip::factory(40)->create();
         
         $attributes = Attribute::all();
-        Trip::all()->each(function ($trip) use ($attributes) {
+        $images = Image::all();
+
+        Location::all()->each(function ($location) use ($images) {
+            $location->images()->attach(
+                $images->random(3)->pluck('id')->toArray(), array('order' => 1)
+            );
+        });
+
+        Trip::all()->each(function ($trip) use ($attributes, $images) {
             $trip->attributes()->attach(
-                $attributes->random(3)->pluck('id')->toArray()
+                $attributes->random(3)->pluck('id')->toArray()               
+            );
+            $trip->images()->attach(
+                $images->random(3)->pluck('id')->toArray(), array('order' => 1)
             );
         });
     }

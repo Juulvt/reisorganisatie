@@ -1,4 +1,4 @@
-<footer class="pt-4">
+<footer class="pt-4 mt-5">
     <div class="container mx-auto flex flex-wrap gap-1 pb-4">
         <div class="flex-1">
             <h2>Locatie</h2>
