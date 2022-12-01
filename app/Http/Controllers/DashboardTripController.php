@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Location;
+use Illuminate\Support\Facades\Gate;
+use App\Models\Trip;
 use App\Models\Country;
+use App\Models\Location;
+use App\Models\Type;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class DashboardTripController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +19,21 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::orderBy('updated_at', 'desc')->get();
+        $trips = Trip::orderBy('updated_at', 'desc')->paginate(5);
         $countries = Country::get();
+        $locations = Location::get();
+        $types = Type::get();
 
-        return view('location.index', [
-            'locations' => $locations,
-            'countries' => $countries
-        ]);
+        if (! Gate::allows('view-dashboard')) {
+            abort(403);
+        } else {
+            return view('admin.trips.index', [
+                'trips' => $trips,
+                'countries' => $countries,
+                'locations' => $locations,
+                'types' => $types
+            ]);
+        }
     }
 
     /**
@@ -52,12 +63,9 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = 1)
+    public function show($id)
     {
-        $location = Location::findOrFail($id);
-        return view('location.show', [
-            'location' => $location
-        ]);
+        //
     }
 
     /**

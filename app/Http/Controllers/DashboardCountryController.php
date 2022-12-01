@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Location;
-use App\Models\Country;
 
-class LocationController extends Controller
+class DashboardCountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +14,16 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::orderBy('updated_at', 'desc')->get();
-        $countries = Country::get();
-
-        return view('location.index', [
-            'locations' => $locations,
-            'countries' => $countries
-        ]);
+        $trips = Trip::get();
+        $users = User::get();
+        if (! Gate::allows('view-dashboard')) {
+            abort(403);
+        } else {
+            return view('admin.country.index', [
+                'trips' => $trips,
+                'users' => $users
+            ]);
+        }
     }
 
     /**
@@ -52,12 +53,9 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = 1)
+    public function show($id)
     {
-        $location = Location::findOrFail($id);
-        return view('location.show', [
-            'location' => $location
-        ]);
+        //
     }
 
     /**

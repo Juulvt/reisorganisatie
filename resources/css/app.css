@@ -8,8 +8,43 @@
     font-family: "poppins", sans-serif!important;
 }
 
+body {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+    height: fit-content;
+    background-color: rgb(243, 244, 246);
+}
+
 a {
     text-decoration: none!important;
+}
+
+td, th {
+    padding: 1em;
+}
+
+li a{
+    color: #000;
+    font-weight: 500;
+}
+
+li.active, li.active a {
+    color: #47a3ff;
+    position: relative;
+    font-weight: 600;
+}
+
+li.active:after {
+    content: '';
+    position: absolute;
+    background-color: #47a3ff;
+    right: -3px;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    border-radius: 20%
+
 }
 
 .btn.primary {
@@ -183,4 +218,8 @@ select {
     min-height: 100%;
     left: 0;
     top: 0;
+}
+
+.text-shadow-black {
+    text-shadow: 1px 1px 5px rgb(0 0 0 / 85%)
 }

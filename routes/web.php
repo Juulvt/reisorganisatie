@@ -63,9 +63,30 @@ Route::delete('/location/{id}', [App\Http\Controllers\LocationController::class,
 
 
 // DASHBOARD //
+Route::get('/admin', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('admin.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/settings', [App\Http\Controllers\DashboardSettingController::class, 'index'])->middleware(['auth'])->name('admin.setting.index');
+
+Route::get('/admin/booking', [App\Http\Controllers\DashboardBookingController::class, 'index'])->middleware(['auth'])->name('admin.booking.index');
+
+Route::get('/admin/trip', [App\Http\Controllers\DashboardTripController::class, 'index'])->middleware(['auth'])->name('admin.trip.index');
+
+Route::get('/admin/location', [App\Http\Controllers\DashboardLocationController::class, 'index'])->middleware(['auth'])->name('admin.location.index');
+
+Route::get('/admin/user', [App\Http\Controllers\DashboardUserController::class, 'index'])->middleware(['auth'])->name('admin.user.index');
+
+//Route::get('/admin', function () {
+//    return view('admin.index');
+//})->middleware(['auth'])->name('admin.index');
+
+Route::get('/admin/trips', function () {
+    return view('admin.trips.index');
+})->middleware(['auth'])->name('admin.trips.index');
+
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->middleware(['auth'])->name('user.index');
+
+Route::get('/user/trips', [App\Http\Controllers\UserTripsController::class, 'index'])->middleware(['auth'])->name('user.trips');
+
+Route::get('/user/account', [App\Http\Controllers\UserAccountController::class, 'index'])->middleware(['auth'])->name('user.account');
 
 require __DIR__.'/auth.php';

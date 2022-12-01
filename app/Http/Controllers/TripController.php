@@ -9,6 +9,10 @@ use App\Models\Type;
 
 class TripController extends Controller
 {
+    public function __contruct()
+    {
+        $this->middleware('auth')->only(['create', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

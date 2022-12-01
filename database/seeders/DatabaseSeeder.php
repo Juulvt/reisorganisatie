@@ -39,12 +39,11 @@ class DatabaseSeeder extends Seeder
         $this->call(AttributesTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         $this->call(ImagesTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
         
         Location::factory(10)->create();
         Accomodation::factory(10)->create();
         Trip::factory(10)->create();
-
-        ImageLocation::factory(40)->create();
         
         $attributes = Attribute::all();
         $images = Image::all();

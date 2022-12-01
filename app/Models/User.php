@@ -41,4 +41,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function trips() {
+        return $this->belongsToMany(Trip::class);
+    }
+
+    public function roles() {
+        return $this->belongsToMany(Role::class);
+    }
+
+    function hasRole($role) {
+        if($this->roles->contains('name', $role))  return true;
+        else return false;
+      }
 }

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Location;
-use App\Models\Country;
 
-class LocationController extends Controller
+class UserTripsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +13,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::orderBy('updated_at', 'desc')->get();
-        $countries = Country::get();
-
-        return view('location.index', [
-            'locations' => $locations,
-            'countries' => $countries
-        ]);
+        return view('user.account');
     }
 
     /**
@@ -52,12 +43,9 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = 1)
+    public function show($id)
     {
-        $location = Location::findOrFail($id);
-        return view('location.show', [
-            'location' => $location
-        ]);
+        //
     }
 
     /**

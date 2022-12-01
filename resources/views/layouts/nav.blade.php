@@ -11,15 +11,19 @@
             <a href={{ route('contact.index') }}>Contact</a>
         </div>
         <div class="account-links flex-1 text-right flex items-center justify-end gap-4">
+
         @if (Route::has('login'))
                 @auth
                 <div class="dropdown">
                     <button onclick="toggleDropdown('accountDropdown')" class="dropdown">Mijn TravelDock ▼</button>
                     <div id="accountDropdown" class="dropdown-content rounded absolute hidden">
-                        <h4>Juul van Tilburg</h4>
+                        <h4>{{Auth::user()->name}}</h4>
                         <ul class="pl-0">
-                            <li><a>Mijn Reizen</a><li>
-                            <li><a>Account</a><li>
+                            <li><a href={{ route('user.trips') }}>My Trips</a><li>
+                            <li><a href={{ route('user.account') }}>Account</a><li>
+                            @if (Auth::user()->hasRole('Admin'))
+                            <li><a href={{ route('admin.index') }}>Admin Panel</a><li>
+                            @endif
                         </ul>
                         <form id="logout-form" class="pb-0 mb-0" action="{{ route('logout') }}" method="POST">
                             @csrf
