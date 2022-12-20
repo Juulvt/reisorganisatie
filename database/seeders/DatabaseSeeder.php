@@ -8,8 +8,10 @@ use Database\Factories\AttributeTripFactory;
 use Database\Factories\ImageLocationFactory;
 use Database\Factories\ImageTripFactory;
 use Database\Factories\TripFactory;
+use Database\Factories\BookingFactory;
 use App\Models\Location;
 use App\Models\Trip;
+use App\Models\Booking;
 use App\Models\Accomodation;
 use App\Models\Type;
 use App\Models\Attribute;
@@ -50,7 +52,7 @@ class DatabaseSeeder extends Seeder
 
         Location::all()->each(function ($location) use ($images) {
             $location->images()->attach(
-                $images->random(3)->pluck('id')->toArray(), array('order' => 1)
+                $images->random(4)->pluck('id')->toArray(), array()
             );
         });
 
@@ -59,7 +61,7 @@ class DatabaseSeeder extends Seeder
                 $attributes->random(3)->pluck('id')->toArray()               
             );
             $trip->images()->attach(
-                $images->random(3)->pluck('id')->toArray(), array('order' => 1)
+                $images->random(4)->pluck('id')->toArray(), array()
             );
         });
     }

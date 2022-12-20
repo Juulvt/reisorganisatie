@@ -10,7 +10,7 @@
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">Trips</h2>
                     <div class="btn btn-primary">
-                        Add Location
+                        Add Trip
                     </div>
                 </div>
                 <div class="flex justify-end gap-3 py-3">
@@ -32,6 +32,7 @@
                         " type="text" id="tripname" name="tripname" placeholder="Enter trip name...">
                     </div>
                 </div>
+                @if (!empty($trips))
                 <table class="w-full rounded-lg overflow-hidden">
                     <tr class="bg-slate-100">
                         <th>ID</th>
@@ -39,6 +40,7 @@
                         <th>Accomodation</th>
                         <th>Location</th>
                         <th>Country</th>
+                        <th></th>
                     </tr>
                     <tr>
                     @foreach ($trips as $trip)
@@ -47,11 +49,18 @@
                         <td>{{$trip->name}}</td>
                         <td>{{$trip->accomodation->name}}</td>
                         <td>{{$trip->accomodation->location->name}}</td>
-                        <td>{{$trip->accomodation->location->country->name}}</td>
+                        <td>{{$trip->accomodation->location->country?->name}}</td>
+                        <td class="text-right min-w-fit">
+                            <div class="btn btn-secondary w-1/3 min-w-fit">Edit</div>
+                            <div class="btn btn-remove w-1/3 min-w-fit">Remove</div>
+                        </td>
                     </tr>
                     @endforeach
                     </tr>
                 </table>
+                @else
+                <p>No trips</p>
+                @endif
             </div>
         </div>
     </div>

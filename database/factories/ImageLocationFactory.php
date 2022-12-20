@@ -20,8 +20,7 @@ class ImageLocationFactory extends Factory
     {
         return [
             'location_id' => Location::inRandomOrder()->first()->id,
-            'image_id' => Image::inRandomOrder()->first()->id,
-            'order' => rand(1,3)
+            'image_id' => Image::inRandomOrder()->first()->id
         ];
     }
 }

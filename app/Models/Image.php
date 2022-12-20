@@ -10,6 +10,8 @@ class Image extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['image_path', 'order'];
+
     public function trips() {
         return $this->belongsToMany(Trip::class);
     }

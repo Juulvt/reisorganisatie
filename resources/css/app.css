@@ -47,26 +47,37 @@ li.active:after {
 
 }
 
-.btn.primary {
-    background-color: #47a3ff;
-    color: #FFF;
-    font-weight: 500;
+.btn-primary {
+    background-color: #2C8FF2!important;
+    color: #FFF!important;
+    font-weight: 500!important;
 }
 
-.btn.primary:hover {
-    background-color: #529FEC;
-    color: #FFF;
+.btn-primary:hover {
+    background-color: #2472c1!important;
+    color: #FFF!important;
 }
 
-.btn.secondary {
-    background-color: #3E557E;
-    color: #FFF;
-    font-weight: 500;
+.btn-secondary {
+    background-color: #3E557E!important;
+    color: #FFF!important;
+    font-weight: 500!important;
 }
 
-.btn.secondary:hover {
-    background-color: #5471A2;
-    color: #FFF;
+.btn-secondary:hover {
+    background-color: #5471A2!important;
+    color: #FFF!important;
+}
+
+.btn-remove {
+    background-color: #FE556C!important;
+    color: #FFF!important;
+    font-weight: 500!important;
+}
+
+.btn-remove:hover {
+    background-color: #d13f53!important;
+    color: #FFF!important;
 }
 
 .btn.big {
@@ -142,6 +153,7 @@ nav a, nav button {
 }
 
 .dropdown-content a{
+    color: #000;
     font-weight: 400;
     font-size: 15px;
 }
@@ -223,3 +235,56 @@ select {
 .text-shadow-black {
     text-shadow: 1px 1px 5px rgb(0 0 0 / 85%)
 }
+
+#side-nav {
+    transition: 0.5s;
+}
+
+@media only screen and (max-width: 1024px) {
+    #side-nav.mobile-open {
+        z-index: 1;
+        width: 200px;
+        transition: 0.5s;
+    }
+
+    .mobile-open .sidenav-links {
+        transform-origin: 0% 50%;
+        animation: transformer 0.25s ease-in 0s 1;
+    }
+
+    .sidenav-links.hidden {
+        animation-direction: reverse;
+        animation: transformer 0.25s ease-in 0s 1;
+    }
+    
+    .mobile-open ul li a{
+        justify-content: flex-start;
+        padding-left: 2rem;
+    }
+}
+
+@keyframes transformer {
+    from {
+        transform: scaleX(0.1);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.10);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+    backdrop-filter: blur(10px) saturate(70%);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 15px 30px rgba(0,0,0,0.11), 0 5px 15px rgba(0,0,0,0.08);
+  }
+
+  .text-shadow-none {
+    text-shadow: none;
+  }

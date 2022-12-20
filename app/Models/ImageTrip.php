@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImageTrip extends Model
 {
+
+    protected $fillable = ['image_id', 'trip_id'];
+
     protected $table = 'image_trip';
     use HasFactory;
 }

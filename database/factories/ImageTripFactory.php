@@ -20,8 +20,7 @@ class ImageTripFactory extends Factory
     {
         return [
             'trip_id' => Trip::inRandomOrder()->first()->id,
-            'image_id' => Image::inRandomOrder()->first()->id,
-            'order' => rand(1,3)
+            'image_id' => Image::inRandomOrder()->first()->id
         ];
     }
 }

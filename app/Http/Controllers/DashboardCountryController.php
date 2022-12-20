@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Gate;
+use App\Models\Country;
 use Illuminate\Http\Request;
+use App\Http\Requests\CountryFormRequest;
 
 class DashboardCountryController extends Controller
 {
@@ -14,16 +16,7 @@ class DashboardCountryController extends Controller
      */
     public function index()
     {
-        $trips = Trip::get();
-        $users = User::get();
-        if (! Gate::allows('view-dashboard')) {
-            abort(403);
-        } else {
-            return view('admin.country.index', [
-                'trips' => $trips,
-                'users' => $users
-            ]);
-        }
+        //
     }
 
     /**
@@ -33,7 +26,11 @@ class DashboardCountryController extends Controller
      */
     public function create()
     {
-        //
+        if (! Gate::allows('view-dashboard')) {
+            abort(403);
+        } else {
+            return view('admin.locations.country');
+        }
     }
 
     /**
@@ -42,9 +39,17 @@ class DashboardCountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryFormRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        if($validated) {
+            $country = Country::create([
+                'name' => $request->name,
+            ]);
+        }
+
+        return redirect(route('admin.location.index'));
     }
 
     /**
@@ -89,6 +94,7 @@ class DashboardCountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Country::destroy($id);
+        return redirect(route('admin.location.index'))->with('message', 'Country has been deleted');
     }
 }

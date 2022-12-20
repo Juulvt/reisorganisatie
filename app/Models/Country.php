@@ -9,6 +9,8 @@ class Country extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function locations() {
         return $this->hasMany(Location::class);
     }

@@ -9,9 +9,6 @@
             <div class="bg-white rounded-lg shadow-sm p-5">
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">Trips</h2>
-                    <div class="btn btn-primary">
-                        Add Location
-                    </div>
                 </div>
                 <div class="flex justify-end gap-3 py-3">
                     <div class="basis-1/4">
@@ -32,6 +29,7 @@
                         " type="text" id="tripname" name="tripname" placeholder="Enter trip name...">
                     </div>
                 </div>
+                @if (!empty($bookings))
                 <table class="w-full rounded-lg overflow-hidden">
                     <tr class="bg-slate-100">
                         <th>ID</th>
@@ -41,6 +39,7 @@
                         <th>User</th>
                         <th>Starting Date</th>
                         <th>End Date</th>
+                        <th></th>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -50,53 +49,15 @@
                         <td>Juul van Tilburg</td>
                         <td>03-12-2023</td>
                         <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
+                        <td class="text-right min-w-fit">
+                            <div class="btn btn-secondary w-1/3 min-w-fit">Edit</div>
+                            <div class="btn btn-remove w-1/3 min-w-fit">Remove</div>
+                        </td>
                     </tr>
                 </table>
+                @else
+                <p>No Bookings</p>
+                @endif
             </div>
         </div>
     </div>

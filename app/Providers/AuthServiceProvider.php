@@ -30,5 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-dashboard', function (User $user) {
             return $user->hasRole('Admin');
         });
+
+        
     }
 }

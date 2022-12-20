@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('image_trip', function (Blueprint $table) {
             $table->foreignId('image_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('trip_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->tinyInteger('order');
             $table->timestamps();
         });
     }

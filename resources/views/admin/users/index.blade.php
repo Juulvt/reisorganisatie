@@ -21,21 +21,45 @@
                         " type="text" id="firstname" name="firstname" placeholder="Enter firstname...">
                     </div>
                 </div>
+                @if (session()->has('message'))
+                    <div class="mx-auto w-4/5 pb-10">
+                        Warning
+                    </div>
+                    <div>
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+
+                @if (!empty($users))
                 <table class="w-full rounded-lg overflow-hidden">
                     <tr class="bg-slate-100">
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <TH>Role</th>
+                        <th></th>
                     </tr>
                     @foreach ($users as $user)
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
+                        <td>{{$user->roles->first()->name}}</td>
+                        <td class="text-right min-w-fit">
+                            <div class="btn btn-secondary w-1/3 min-w-fit">Edit</div>
+                            <form class="inline-block w-1/3 min-w-fit" action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-remove w-full" type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     
                 </table>
+                @else
+                <p>No users</p>
+                @endif
             </div>
         </div>
     </div>

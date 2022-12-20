@@ -89,6 +89,7 @@ class DashboardUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect(route('admin.user.index'))->with('message', 'User has been deleted');
     }
 }

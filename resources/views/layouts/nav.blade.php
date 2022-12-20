@@ -2,7 +2,7 @@
     <div class="container mx-auto flex justify-between gap-1 h-24 py-4">
         <div class="flex-1 max-h-full relative flex items-center">
             <a class="logo h-full" href={{ route('index.index') }}>
-                <img class="h-full" src="../images/logo.png" alt="logo">
+                <img class="h-full" src="{{ route('index.index') }}/images/logo.png" alt="logo">
             </a>
         </div>
         <div class="navigation-links flex-1 flex items-center justify-center gap-4">
@@ -19,10 +19,10 @@
                     <div id="accountDropdown" class="dropdown-content rounded absolute hidden">
                         <h4>{{Auth::user()->name}}</h4>
                         <ul class="pl-0">
-                            <li><a href={{ route('user.trips') }}>My Trips</a><li>
-                            <li><a href={{ route('user.account') }}>Account</a><li>
+                            <li><a href={{ route('user.trips') }}>My Trips</a></li>
+                            <li><a href={{ route('user.account') }}>Account</a></li>
                             @if (Auth::user()->hasRole('Admin'))
-                            <li><a href={{ route('admin.index') }}>Admin Panel</a><li>
+                            <li><a href={{ route('admin.index') }}>Admin Panel</a></li>
                             @endif
                         </ul>
                         <form id="logout-form" class="pb-0 mb-0" action="{{ route('logout') }}" method="POST">

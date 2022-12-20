@@ -17,13 +17,20 @@ class ImagesTableSeeder extends Seeder
     {
         $images = [
             [
-                'image_path' => '/images/locations/amsterdam.jpg'
+                'image_path' => '/images/locations/amsterdam.jpg',
+                'order' => 0
             ],
             [
-                'image_path' => '/images/locations/denhaag.jpg'
+                'image_path' => '/images/locations/denhaag.jpg',
+                'order' => 1
             ],
             [
-                'image_path' => '/images/locations/rotterdam.jpg'
+                'image_path' => '/images/locations/rotterdam.jpg',
+                'order' => 2
+            ], 
+            [
+                'image_path' => '/images/locations/amsterdam.jpg',
+                'order' => 3
             ]
         ];
 
