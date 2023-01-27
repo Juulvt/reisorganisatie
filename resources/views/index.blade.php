@@ -27,15 +27,6 @@
                 @endforeach
             </select>
         </div>
-        <div class="flex-1">
-            <label>When do you want to go?</label>                    
-            <select class="rounded" name="location" id="location">
-                <option value="Nederland">Nederland</option>
-                <option value="Duitsland">Duitsland</option>
-                <option value="Frankrijk">Frankrijk</option>
-                <option value="Spanje">Spanje</option>
-            </select>
-        </div>
         <div class="flex-none">
             <button class="bg-main h-fit py-3 px-5 rounded text-white font-bold"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
         </div>
@@ -43,7 +34,7 @@
 </div>
 <main>
     <div class="container mx-auto my-5">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-3 gap-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-3 gap-y-8 mb-5">
             @foreach ($trips as $trip)
             <div class="flex flex-col justify-between bg-white rounded-lg shadow-sm overflow-hidden">
                 <div class="flex-none">
@@ -61,7 +52,7 @@
                     <div class="flex-none">
                         <div class="flex justify-between items-center">
                             <span class="text-sm">€{{$trip->accomodation->cost}}</span>
-                            <a href={{ route('index.show', ['id' => $trip->id])}} class="btn primary">View trip</a>
+                            <a href={{ route('index.show', ['id' => $trip->id])}} class="inline-block bg-main py-2.5 w-32 text-center font-bold rounded text-white shadow-md mb-3">View trip</a>
                         </div>
                     </div>
                 </div>

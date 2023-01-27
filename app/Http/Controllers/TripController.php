@@ -20,7 +20,7 @@ class TripController extends Controller
      */
     public function index()
     {
-        $trips = Trip::orderBy('updated_at', 'desc')->paginate(5);
+        $trips = Trip::orderBy('updated_at', 'desc')->paginate(6);
         $countries = Country::get();
         $types = Type::get();
 
