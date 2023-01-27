@@ -8,6 +8,10 @@
     font-family: "poppins", sans-serif!important;
 }
 
+.bg-main {
+    background-color: #47a3ff;
+}
+
 body {
     min-height: 100vh;
     max-width: 100vw;

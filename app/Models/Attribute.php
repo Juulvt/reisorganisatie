@@ -9,6 +9,8 @@ class Attribute extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['description'];
+
     public function trips() {
         return $this->belongsToMany(Trip::class);
     }

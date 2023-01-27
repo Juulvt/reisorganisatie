@@ -6,6 +6,7 @@
     <div class="flex-1 flex min-h-full">
         @include('layouts.admin-sidenav')
         <div class="p-5 basis-5/6">
+        <a href={{ route('admin.location.show', $location->id) }} class="inline-block bg-main py-2.5 w-32 text-center font-bold rounded text-white shadow-md mb-3"><i class="fa-solid fa-left-long"></i> Return</a>
         <div class="bg-white rounded-lg shadow-sm p-5">
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">Edit {{$location->name}}</h2>
@@ -130,7 +131,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit">Edit</button>
+                    <button class="inline-block bg-main w-32 py-3 font-bold rounded text-white mt-3" type="submit">Edit</button>
                 </form>
             </div>
         </div>

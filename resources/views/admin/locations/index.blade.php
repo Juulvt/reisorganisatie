@@ -6,10 +6,11 @@
     <div class="flex-1 flex min-h-full">
         @include('layouts.admin-sidenav')
         <div class="p-4 lg:p-5 basis-5/6 max-w-full overflow-hidden">
+        <a href={{ route('admin.index') }} class="inline-block bg-main py-2.5 w-32 text-center font-bold rounded text-white shadow-md mb-3"><i class="fa-solid fa-left-long"></i> Return</a>
             <div class="bg-white rounded-lg shadow-sm p-3 lg:p-5 w-full mb-3">
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">Countries</h2>
-                    <a href="{{ route('admin.country.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.country.create') }}" class="inline-block bg-main py-2.5 w-28 text-center font-bold rounded text-white shadow-md">
                         Add Country
                     </a>
                 </div>
@@ -26,11 +27,11 @@
                             <th scope="row whitespace-nowrap">{{$country->id}}</th>
                             <td>{{$country->name}}</td>
                             <td class="text-right min-w-fit whitespace-nowrap">
-                                <form class="inline-block w-1/3 min-w-fit" action="{{ route('admin.country.destroy', $country->id) }}" method="POST">
+                                <form class="inline-block w-1/3 min-w-fit confirm-delete hidden" action="{{ route('admin.country.destroy', $country->id) }}" method="POST" id="country{{$country->id}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-remove w-full show-alert-delete-box" type="submit">Delete</button>
                                 </form>
+                                <button class="btn btn-remove inline-block w-1/3 min-w-fit show-alert-delete-box" data-id="{{ $country->id }}" data-action="{{ route('admin.country.destroy',$country->id) }}" onclick="deleteConfirmation('country{{$country->id}}')"> Delete</button>
                             </td>
                         </tr>
                         @endforeach
@@ -43,7 +44,7 @@
             <div class="bg-white rounded-lg shadow-sm p-3 lg:p-5 w-full">
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">Locations</h2>
-                    <a href="{{ route('admin.location.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.location.create') }}" class="inline-block bg-main py-2.5 w-28 text-center font-bold rounded text-white shadow-md">
                         Add Location
                     </a>
                 </div>
@@ -81,11 +82,11 @@
                             <td>{{$location->country?->name}}</td>
                             <td class="text-right min-w-fit whitespace-nowrap">
                                 <a href="{{ route('admin.location.show', $location->id) }}" class="btn btn-secondary w-1/3 min-w-fit">Show</a>
-                                <form class="inline-block w-1/3 min-w-fit" action="{{ route('admin.location.destroy', $location->id) }}" method="POST">
+                                <form class="inline-block w-1/3 min-w-fit confirm-delete hidden" action="{{ route('admin.location.destroy', $location->id) }}" method="POST" id="location{{$location->id}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-remove w-full" type="submit">Delete</button>
                                 </form>
+                                <button class="btn btn-remove inline-block w-1/3 min-w-fit show-alert-delete-box" data-id="{{ $location->id }}" data-action="{{ route('admin.location.destroy',$location->id) }}" onclick="deleteConfirmation('location{{$location->id}}')"> Delete</button>
                             </td>
                         </tr>
                         @endforeach
@@ -98,35 +99,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
-
-<script type="text/javascript">
-    $('.show-alert-delete-box').click(function(event){
-        var form =  event.target.form;
-        var name = $(this).data("name");
-        event.preventDefault();
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            showCancelButton: true,
-            showConfirmButton: true,
-            focusConfirm: false,
-            confirmButtonColor: '#FE556C',
-            cancelButtonColor: '#3E557E',
-            confirmButtonText: 'Confirm Delete'
-            }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'success'
-                )
-            }
-            }).then((willDelete) => {
-            if (willDelete) {
-                form.submit();
-            }
-        });
-    });
-</script>

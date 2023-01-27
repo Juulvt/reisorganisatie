@@ -20,6 +20,7 @@ class AccomodationFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->name(),
+            'description' => $this->faker->unique()->text(),
             'city' => $this->faker->city(),
             'address' => $this->faker->streetAddress(),
             'min_amount_visitors' => rand(1,10),

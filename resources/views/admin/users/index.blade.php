@@ -6,6 +6,7 @@
     <div class="flex-1 flex min-h-full">
         @include('layouts.admin-sidenav')
         <div class="p-5 basis-5/6">
+        <a href={{ route('admin.index') }} class="inline-block bg-main py-2.5 w-32 text-center font-bold rounded text-white shadow-md mb-3"><i class="fa-solid fa-left-long"></i> Return</a>
             <div class="bg-white rounded-lg shadow-sm p-5">
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">Users</h2>
@@ -47,11 +48,11 @@
                         <td>{{$user->roles->first()->name}}</td>
                         <td class="text-right min-w-fit">
                             <div class="btn btn-secondary w-1/3 min-w-fit">Edit</div>
-                            <form class="inline-block w-1/3 min-w-fit" action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
+                            <form class="inline-block w-1/3 min-w-fit confirm-delete hidden" action="{{ route('admin.user.destroy', $user->id) }}" method="POST" id="user{{$user->id}}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-remove w-full" type="submit">Delete</button>
                             </form>
+                            <button class="btn btn-remove inline-block w-1/3 min-w-fit show-alert-delete-box" data-id="{{ $user->id }}" data-action="{{ route('admin.user.destroy',$user->id) }}" onclick="deleteConfirmation('user{{$user->id}}')"> Delete</button>
                         </td>
                     </tr>
                     @endforeach

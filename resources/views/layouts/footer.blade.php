@@ -4,7 +4,7 @@
             <h2>Locatie</h2>
             <ul class="pl-0">
                 <li><a href={{ route('index.index') }}>Home</a><li>
-                <li><a href={{ route('about.index') }}>Over ons</a><li>
+                <li><a href={{ route('about.index') }}>About</a><li>
                 <li><a href={{ route('contact.index') }}>Contact</a><li>
             </ul>
         </div>
@@ -17,14 +17,14 @@
             </ul>
         </div>
         <div class="flex-1">
-            <h2>Over ons</h2>
-            <p>Tekst over hoe geweldig dit bedrijf is. Waarom je bij ons wil boeken.</p>
+            <h2>About us</h2>
+            <p>Here at TravelDock we seek to provide the best traveling experience. </p>
         </div>
     </div>
     <div class="footer-extend py-2">
         <div class="container">
-            <a>Privacy Policy</a>
-            <a>Algemene voorwaarden</a>
+            <a href={{ route('privacy.index') }}>Privacy Policy</a>
+            <a href={{ route('terms.index') }}>Terms & Conditions</a>
         </div>
     </div>
 </footer>

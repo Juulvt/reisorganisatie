@@ -64,15 +64,15 @@
             <div class="flex flex-col justify-between h-full px-5">
                 <div class="flex-1">
                     <h2 class="mb-4">Contact information</h2>
-                    <p><i class="fa-solid fa-phone"></i> +0244 4567 2870</p>
-                    <p><i class="fa-solid fa-envelope"></i> contact@traveldock.com</p>
-                    <p><i class="fa-solid fa-location-dot"></i> 94 Vonkstraat 2834DA</p>
+                    <p><i class="fa-solid fa-phone"></i> {{$contact?->phone}}</p>
+                    <p><i class="fa-solid fa-envelope"></i> {{$contact?->email}}</p>
+                    <p><i class="fa-solid fa-location-dot"></i> {{$contact?->address}}</p>
                 </div>
                 <div class="socials">
-                    <a><i class="fa-brands fa-pinterest-p"></i></a>
-                    <a><i class="fa-brands fa-facebook-f"></i></a>
-                    <a><i class="fa-brands fa-instagram"></i></a>
-                    <a><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="{{$contact?->pinterest}}"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="{{$contact?->facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="{{$contact?->instagram}}"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="{{$contact?->linkedin}}"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>

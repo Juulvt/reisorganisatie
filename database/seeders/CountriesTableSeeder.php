@@ -17,16 +17,16 @@ class CountriesTableSeeder extends Seeder
     {
         $countries = [
             [
-                'name' => 'nederland'
+                'name' => 'Netherlands'
             ],
             [
-                'name' => 'frankrijk'
+                'name' => 'France'
             ],
             [
-                'name' => 'spanje'
+                'name' => 'Spain'
             ],
             [
-                'name' => 'duitsland'
+                'name' => 'Germany'
             ]
         ];
 

@@ -37,7 +37,7 @@
             </select>
         </div>
         <div class="flex-none">
-            <button class="btn primary big"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button class="bg-main h-fit py-3 px-5 rounded text-white font-bold"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
         </div>
     </div>
 </div>

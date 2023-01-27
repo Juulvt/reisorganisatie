@@ -39,6 +39,30 @@ Route::patch('/admin/trip/{id}', [App\Http\Controllers\DashboardTripController::
 // DELETE
 Route::delete('/admin/trip/{id}', [App\Http\Controllers\DashboardTripController::class, 'destroy'])->name('admin.trip.destroy');
 
+// Dashboard accomodation types//
+// GET
+Route::get('/admin/type', [App\Http\Controllers\DashboardTypeController::class, 'index'])->middleware(['auth'])->name('admin.type.index');
+// POST
+Route::get('/admin/type/create', [App\Http\Controllers\DashboardTypeController::class, 'create'])->middleware(['auth'])->name('admin.type.create');
+Route::post('/admin/type', [App\Http\Controllers\DashboardTypeController::class, 'store'])->name('admin.type.store');
+// PUT OR PATCH
+Route::get('/admin/type/edit/{id}', [App\Http\Controllers\DashboardTypeController::class, 'edit'])->middleware(['auth'])->name('admin.type.edit');
+Route::patch('/admin/type/{id}', [App\Http\Controllers\DashboardTypeController::class, 'update'])->middleware(['auth'])->name('admin.type.update');
+// DELETE
+Route::delete('/admin/type/{id}', [App\Http\Controllers\DashboardTypeController::class, 'destroy'])->name('admin.type.destroy');
+
+// Dashboard trip attributes//
+// GET
+Route::get('/admin/attribute', [App\Http\Controllers\DashboardAttributeController::class, 'index'])->middleware(['auth'])->name('admin.attribute.index');
+// POST
+Route::get('/admin/attribute/create', [App\Http\Controllers\DashboardAttributeController::class, 'create'])->middleware(['auth'])->name('admin.attribute.create');
+Route::post('/admin/attribute', [App\Http\Controllers\DashboardAttributeController::class, 'store'])->name('admin.attribute.store');
+// PUT OR PATCH
+Route::get('/admin/attribute/edit/{id}', [App\Http\Controllers\DashboardAttributeController::class, 'edit'])->middleware(['auth'])->name('admin.attribute.edit');
+Route::patch('/admin/attribute/{id}', [App\Http\Controllers\DashboardAttributeController::class, 'update'])->middleware(['auth'])->name('admin.attribute.update');
+// DELETE
+Route::delete('/admin/attribute/{id}', [App\Http\Controllers\DashboardAttributeController::class, 'destroy'])->name('admin.attribute.destroy');
+
 // Dashboard location //
 // GET
 Route::get('/admin/location', [App\Http\Controllers\DashboardLocationController::class, 'index'])->middleware(['auth'])->name('admin.location.index');
@@ -59,7 +83,7 @@ Route::post('/admin/country', [App\Http\Controllers\DashboardCountryController::
 // DELETE
 Route::delete('/admin/country/{id}', [App\Http\Controllers\DashboardCountryController::class, 'destroy'])->name('admin.country.destroy');
 
-//dashboard user //
+// Dashboard user //
 // GET
 Route::get('/admin/user', [App\Http\Controllers\DashboardUserController::class, 'index'])->middleware(['auth'])->name('admin.user.index');
 Route::get('/admin/user/{id}', [App\Http\Controllers\DashboardUserController::class, 'show'])->name('admin.user.show')->middleware(['auth'])->whereNumber('id');
@@ -72,12 +96,26 @@ Route::patch('/admin/user/{id}', [App\Http\Controllers\DashboardUserController::
 // DELETE
 Route::delete('/admin/user/{id}', [App\Http\Controllers\DashboardUserController::class, 'destroy'])->name('admin.user.destroy');
 
+// Dashboard role//
+// GET
+Route::get('/admin/role', [App\Http\Controllers\DashboardRoleController::class, 'index'])->middleware(['auth'])->name('admin.role.index');
+// POST
+Route::get('/admin/role/create', [App\Http\Controllers\DashboardRoleController::class, 'create'])->middleware(['auth'])->name('admin.role.create');
+Route::post('/admin/role', [App\Http\Controllers\DashboardRoleController::class, 'store'])->name('admin.role.store');
+// PUT OR PATCH
+Route::get('/admin/role/edit/{id}', [App\Http\Controllers\DashboardRoleController::class, 'edit'])->middleware(['auth'])->name('admin.role.edit');
+Route::patch('/admin/role/{id}', [App\Http\Controllers\DashboardRoleController::class, 'update'])->middleware(['auth'])->name('admin.role.update');
+// DELETE
+Route::delete('/admin/role/{id}', [App\Http\Controllers\DashboardRoleController::class, 'destroy'])->name('admin.role.destroy');
+
 // Dashboard settings //
 // PUT OR PATCH
 Route::get('/admin/settings/contact', [App\Http\Controllers\DashboardContactController::class, 'edit'])->middleware(['auth'])->name('admin.setting.contact');
+Route::patch('/admin/settings/contact', [App\Http\Controllers\DashboardContactController::class, 'update'])->middleware(['auth'])->name('admin.setting.updatecontact');
 Route::get('/admin/settings/about', [App\Http\Controllers\DashboardAboutController::class, 'edit'])->middleware(['auth'])->name('admin.setting.about');
 Route::patch('/admin/settings/about', [App\Http\Controllers\DashboardAboutController::class, 'update'])->middleware(['auth'])->name('admin.setting.updateabout');
 Route::get('/admin/settings/privacyterms', [App\Http\Controllers\DashboardSettingController::class, 'edit'])->middleware(['auth'])->name('admin.setting.privacy');
+Route::patch('/admin/settings/privacyterms', [App\Http\Controllers\DashboardSettingController::class, 'update'])->middleware(['auth'])->name('admin.setting.updateprivacy');
 
 
 // Visitor pages //
@@ -88,15 +126,15 @@ Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->na
 
 // Contact
 // GET
-Route::get('/contact', [App\Http\Controllers\AboutController::class, 'index'])->name('contact.index');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 
 // Privacy
 // GET
-Route::get('/privacy', [App\Http\Controllers\AboutController::class, 'index'])->name('privacy.index');
+Route::get('/privacy', [App\Http\Controllers\PrivacyController::class, 'index'])->name('privacy.index');
 
 // Terms & Conditions
 // GET
-Route::get('/terms', [App\Http\Controllers\AboutController::class, 'index'])->name('terms.index');
+Route::get('/terms', [App\Http\Controllers\TermsController::class, 'index'])->name('terms.index');
 
 // Trips 
 // GET
@@ -115,14 +153,6 @@ Route::delete('/{id}', [App\Http\Controllers\TripController::class, 'destroy'])-
 // GET
 Route::get('/location', [App\Http\Controllers\LocationController::class, 'index'])->name('location.index');
 Route::get('/location/{id}', [App\Http\Controllers\LocationController::class, 'show'])->name('location.show')->whereNumber('id');
-// POST
-Route::get('/location/create', [App\Http\Controllers\LocationController::class, 'create'])->name('location.create');
-Route::post('/location', [App\Http\Controllers\LocationController::class, 'store'])->name('location.store');
-// PUT OR PATCH
-Route::get('/location/edit/{id}', [App\Http\Controllers\LocationController::class, 'edit'])->name('location.edit');
-Route::patch('/location/{id}', [App\Http\Controllers\LocationController::class, 'update'])->name('location.update');
-// DELETE
-Route::delete('/location/{id}', [App\Http\Controllers\LocationController::class, 'destroy'])->name('location.destroy');
 
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->middleware(['auth'])->name('user.index');
 

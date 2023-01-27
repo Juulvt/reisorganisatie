@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use App\Models\Terms;
+use App\Models\Privacy;
+use App\Http\Requests\SettingFormRequest;
 
 class DashboardSettingController extends Controller
 {
@@ -12,79 +15,36 @@ class DashboardSettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function edit()
     {
+        $privacy = Privacy::get();
+        $terms = Terms::get();
+        return view('admin.settings.privacyandterms', [
+            'privacy' => $privacy->first(),
+            'terms' => $terms->first()
+        ]);
+    }
 
-        if (! Gate::allows('view-dashboard')) {
-            abort(403);
-        } else {
-            return view('admin.settings.index');
+
+    public function update(SettingFormRequest $request) 
+    {
+        $validated = $request->validated();
+
+        if($validated) {
+            $privacy = Privacy::updateOrCreate(
+                ['id' => 1,],
+                [
+                'description' => $request->privacy
+                ]
+            );
+            $terms = Terms::updateOrCreate(
+                ['id' => 1,],
+                [
+                'description' => $request->terms
+                ]
+            );
         }
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect(route('admin.setting.privacy'));
     }
 }

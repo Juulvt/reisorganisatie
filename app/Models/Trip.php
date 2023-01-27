@@ -11,6 +11,8 @@ class Trip extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'status', 'accomodation_id'];
+
     public function accomodation() {
         return $this->belongsTo(Accomodation::class);
     }

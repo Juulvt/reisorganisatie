@@ -20,6 +20,7 @@ class TripFactory extends Factory
         return [
             'name' => $this->faker->unique()->name(),
             'description' => $this->faker->unique()->text(),
+            'status' => 'active',
             'accomodation_id' => Accomodation::inRandomOrder()->first()->id
         ];
     }

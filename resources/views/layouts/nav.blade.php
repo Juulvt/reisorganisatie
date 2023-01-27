@@ -7,7 +7,8 @@
         </div>
         <div class="navigation-links flex-1 flex items-center justify-center gap-4">
             <a href={{ route('index.index') }}>Home</a>
-            <a href={{ route('about.index') }}>Over ons</a>
+            <a href={{ route('location.index') }}>Locations</a>
+            <a href={{ route('about.index') }}>About</a>
             <a href={{ route('contact.index') }}>Contact</a>
         </div>
         <div class="account-links flex-1 text-right flex items-center justify-end gap-4">
@@ -15,7 +16,7 @@
         @if (Route::has('login'))
                 @auth
                 <div class="dropdown">
-                    <button onclick="toggleDropdown('accountDropdown')" class="dropdown">Mijn TravelDock ▼</button>
+                    <button onclick="toggleDropdown('accountDropdown')" class="dropdown">My TravelDock ▼</button>
                     <div id="accountDropdown" class="dropdown-content rounded absolute hidden">
                         <h4>{{Auth::user()->name}}</h4>
                         <ul class="pl-0">
@@ -27,8 +28,8 @@
                         </ul>
                         <form id="logout-form" class="pb-0 mb-0" action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" form="logout-form" class="dropdown-item pb-0 mb-0" value="Submit">
-                                Log out
+                            <button type="submit" form="logout-form" class="dropdown-item pb-0 mb-0 font-bold" value="Submit">
+                            <i class="fa-solid fa-angle-left"></i> Log out
                             </button>
                         </form>
                     </div>

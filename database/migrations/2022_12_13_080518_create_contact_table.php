@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('email', 128)->unique();
             $table->string('phone', 128)->unique();
-            $table->string('adress', 128)->unique();
+            $table->string('address', 128)->unique();
             $table->string('pinterest', 512)->unique();
             $table->string('facebook', 512)->unique();
             $table->string('instagram', 512)->unique();

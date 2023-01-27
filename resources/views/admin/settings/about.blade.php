@@ -6,6 +6,7 @@
     <div class="flex-1 flex min-h-full">
         @include('layouts.admin-sidenav')
         <div class="p-5 basis-5/6">
+        <a href={{ route('admin.index') }} class="inline-block bg-main py-2.5 w-32 text-center font-bold rounded text-white shadow-md mb-3"><i class="fa-solid fa-left-long"></i> Return</a>
         <div class="bg-white rounded-lg shadow-sm p-5">
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">About page</h2>
@@ -58,9 +59,9 @@
                                         disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
                                         invalid:border-pink-500 invalid:text-pink-600
                                         focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-                                        " type="text" id="title" name="title" value={{$about?->title}}>
+                                        " type="text" id="title" name="title" value="{{$about?->title}}">
                                     </div>
-                                    <label>Desctription</label>
+                                    <label>Description</label>
                                     <textarea id="description" name="description" rows="4" class="flex-1 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">{{$about?->description}}</textarea>
                                 </div>
                             </div>
@@ -142,14 +143,14 @@
                                     disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
                                     invalid:border-pink-500 invalid:text-pink-600
                                     focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-                                    " type="text" id="subtitle" name="subtitle" value={{$about?->subtitle}}>
+                                    " type="text" id="subtitle" name="subtitle" value="{{$about?->subtitle}}">
                                 </div>
-                                <label>Desctription</label>
+                                <label>Description</label>
                                 <textarea id="text" name="text" rows="4" class="flex-1 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">{{$about?->text}}</textarea>
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit">Edit</button>
+                    <button class="inline-block bg-main py-2.5 w-28 text-center font-bold rounded text-white shadow-md" type="submit">Edit</button>
                 </form>
             </div>
         </div>

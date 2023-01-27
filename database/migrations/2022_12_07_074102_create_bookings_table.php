@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('trip_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->string('status', 32);
             $table->date('startdate');
             $table->date('enddate');
             $table->timestamps();

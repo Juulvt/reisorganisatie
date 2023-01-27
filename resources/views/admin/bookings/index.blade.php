@@ -14,9 +14,9 @@
                     <div class="basis-1/4">
                         <label>Country</label>
                         <select class="rounded bg-slate-100" name="location" id="location">
-                                <option value="Nederland">Nederland</option>
-                                <option value="Nederland">Nederland</option>
-                                <option value="Nederland">Nederland</option>
+                            @foreach ($countries as $country)
+                                <option value={{$country->name}}>{{$country->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="basis-1/4">

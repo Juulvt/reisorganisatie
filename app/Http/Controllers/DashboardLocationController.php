@@ -81,12 +81,14 @@ class DashboardLocationController extends Controller
                 ]);
             }
         }
+
+        return redirect(route('admin.location.index'));
     }
 
-    public function storeImage($request, $image, $interation) {
-        $newImageName = uniqid() . '-' . $request->name . $interation .'.' . $image->extension();
+    public function storeImage($request, $image, $iteration) {
+        $newImageName = uniqid() . '-' . $request->name . $iteration .'.' . $image->extension();
         
-        return $image->move(public_path('images/location'), $newImageName);
+        return $image->move(public_path('images/locations'), $newImageName);
     }
 
     /**
@@ -129,7 +131,7 @@ class DashboardLocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LocationFormRequest $request, $id)
     {   
         $location = Location::where('id', $id)->update([
             'name' => $request->name,

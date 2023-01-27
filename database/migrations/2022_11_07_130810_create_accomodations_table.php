@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('accomodations', function (Blueprint $table) {
             $table->id();
             $table->string('name', 32);
+            $table->string('description', 2048);
             $table->string('city', 32);
             $table->string('address', 128);
             $table->tinyInteger('min_amount_visitors');
