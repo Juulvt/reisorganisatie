@@ -10,27 +10,31 @@
     </div>
 </header>
 <div class="container mx-auto mb-5">
+    <form method="GET" action={{route('index.index')}} id="post-filter">
     <div class="flex justify-between items-center flex-wrap gap-5 bg-white rounded-xl relative px-6 py-4">
         <div class="flex-1">
             <label>Country</label>
-            <select class="rounded" name="location" id="location">
+            <select class="rounded" name="country" id="country">
+                    <option value="" @if(request('country') == ("" || null)) selected="selected"@endif>No preference</option>
                 @foreach ($countries as $country)
-                    <option value={{$country->name}}>{{$country->name}}</option>
+                    <option @if(request('country') == $country->id ) selected="selected" @endif value={{$country->id}}>{{$country->name}}</option>
                 @endforeach
             </select>
         </div>
         <div class="flex-1">
             <label>Type of accomodation</label>
-            <select class="rounded" name="location" id="location">
+            <select class="rounded" name="type" id="type">
+                <option value="" @if(request('type') == ("" || null)) selected="selected"@endif>No preference</option>
                 @foreach ($types as $type)
-                    <option value={{$type->name}}>{{$type->name}}</option>
+                    <option @if(request('type') == $type->id ) selected="selected" @endif value={{$type->id}}>{{$type->name}}</option>
                 @endforeach
             </select>
         </div>
         <div class="flex-none">
-            <button class="bg-main h-fit py-3 px-5 rounded text-white font-bold"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button onclick="filterTrips();" class="bg-main h-fit py-3 px-5 rounded text-white font-bold"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
         </div>
     </div>
+    </form>
 </div>
 <main>
     <div class="container mx-auto my-5">

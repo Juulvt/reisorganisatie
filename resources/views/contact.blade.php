@@ -58,7 +58,7 @@
                 </div>
             </div>
             <input type="submit" value="Send Message">
-            <form>
+            </form>
         </div>
         <div class="flex-1  py-5 contact-info">
             <div class="flex flex-col justify-between h-full px-5">

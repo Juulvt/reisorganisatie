@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'trip_id', 'startdate', 'enddate', 'status'];
+    protected $fillable = ['description', 'user_id', 'trip_id'];
 
     public function user() {
         return $this->belongsTo(User::class);

@@ -22,7 +22,6 @@ Route::get('/admin', [App\Http\Controllers\DashboardController::class, 'index'])
 // Dashboard bookings //
 // GET
 Route::get('/admin/booking', [App\Http\Controllers\DashboardBookingController::class, 'index'])->middleware(['auth'])->name('admin.booking.index');
-Route::get('/admin/booking/{id}', [App\Http\Controllers\DashboardBookingController::class, 'show'])->name('admin.booking.show')->middleware(['auth'])->whereNumber('id');
 // DELETE
 Route::delete('/admin/booking/{id}', [App\Http\Controllers\DashboardBookingController::class, 'destroy'])->name('admin.booking.destroy');
 
@@ -136,6 +135,9 @@ Route::get('/privacy', [App\Http\Controllers\PrivacyController::class, 'index'])
 // GET
 Route::get('/terms', [App\Http\Controllers\TermsController::class, 'index'])->name('terms.index');
 
+Route::post('{tripid}/review', [App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
+Route::delete('{tripid}/review/{id}', [App\Http\Controllers\ReviewController::class, 'destroy'])->name('review.destroy');
+
 // Trips 
 // GET
 Route::get('/', [App\Http\Controllers\TripController::class, 'index'])->name('index.index');
@@ -157,7 +159,10 @@ Route::get('/location/{id}', [App\Http\Controllers\LocationController::class, 's
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->middleware(['auth'])->name('user.index');
 
 Route::get('/user/trips', [App\Http\Controllers\UserTripsController::class, 'index'])->middleware(['auth'])->name('user.trips');
+Route::patch('user/trips/{id}', [App\Http\Controllers\userTripsController::class, 'update'])->middleware(['auth'])->name('trips.update');
 
 Route::get('/user/account', [App\Http\Controllers\UserAccountController::class, 'index'])->middleware(['auth'])->name('user.account');
+Route::patch('user/account/{id}', [App\Http\Controllers\userAccountController::class, 'update'])->middleware(['auth'])->name('account.update');
+Route::delete('user/account/{id}', [App\Http\Controllers\userAccountController::class, 'destroy'])->name('account.destroy');
 
 require __DIR__.'/auth.php';

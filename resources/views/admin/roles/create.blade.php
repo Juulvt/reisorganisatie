@@ -40,7 +40,7 @@
                             " type="text" id="name" name="name" placeholder="Enter role name...">
                         </div>
                     </div>
-                    <button class="inline-block bg-main py-2.5 w-28 text-center font-bold rounded text-white shadow-md" type="submit">Create</button>
+                    <button class="inline-block bg-main mt-2 py-2.5 w-28 text-center font-bold rounded text-white shadow-md" type="submit">Create</button>
                 </form>
             </div>
         </div>

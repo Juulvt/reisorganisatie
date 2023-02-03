@@ -3,17 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Booking;
-use App\Http\Requests\StatusFormRequest;
+use App\Models\Review;
+use App\Http\Requests\ReviewFormRequest;
 
-class UserTripsController extends Controller
+class ReviewController extends Controller
 {
-
-    public function __contruct()
-    {
-        $this->middleware('auth')->only(['create', 'edit', 'update', 'destroy']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +15,7 @@ class UserTripsController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-
-        return view('user.trips', [
-            'user' => $user
-        ]);
+        //
     }
 
     /**
@@ -44,9 +34,19 @@ class UserTripsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReviewFormRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        if($validated) {
+            $review = Review::create([
+                'trip_id' => $request->id,
+                'user_id' => $request->user()->id,
+                'description' => $request->description
+            ]);
+        }
+
+        return redirect(route('index.show', ['id' => $request->id]));
     }
 
     /**
@@ -80,11 +80,7 @@ class UserTripsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Booking::where('id', $id)->update([
-            'status' => 'canceled'
-        ]);
-
-        return redirect(route('user.trips'));
+        //
     }
 
     /**
@@ -93,8 +89,10 @@ class UserTripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($tripid, $id)
     {
         //
+        Review::destroy($id);
+        return redirect(route('index.show', $tripid));
     }
 }

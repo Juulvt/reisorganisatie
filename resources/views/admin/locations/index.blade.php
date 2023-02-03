@@ -41,33 +41,15 @@
                 <p>No countries</p>
                 @endif
             </div>
-            <div class="bg-white rounded-lg shadow-sm p-3 lg:p-5 w-full">
+            <div class="bg-white rounded-lg mb-3 shadow-sm p-3 lg:p-5 w-full">
                 <div class="flex justify-between items-center">
                     <h2 class="text-xl">Locations</h2>
                     <a href="{{ route('admin.location.create') }}" class="inline-block bg-main py-2.5 w-28 text-center font-bold rounded text-white shadow-md">
                         Add Location
                     </a>
                 </div>
-                <div class="flex justify-end gap-3 py-3">
-                    <div class="basis-full lg:basis-1/4">
-                        <label>Country</label>
-                        <select class="rounded bg-slate-100" name="location" id="location">
-                            @foreach ($countries as $country)
-                                <option value={{$country->name}}>{{$country->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="basis-full lg:basis-1/4">
-                        <label for="firstname">location</label>
-                        <input class="placeholder-slate-400 bg-slate-100
-                        focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                        invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-                        " type="text" id="locationname" name="locationname" placeholder="Enter location name...">
-                    </div>
-                </div>
                 @if (!empty($locations))
-                <div class="max-w-full w-full overflow-x-auto relative mx-auto">
+                <div class="max-w-full w-full mt-3 overflow-x-auto relative mx-auto">
                     <table class="w-full rounded-lg">
                         <tr class="bg-slate-100">
                             <th scope="col">ID</th>

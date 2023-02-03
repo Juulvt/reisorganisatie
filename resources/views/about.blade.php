@@ -2,7 +2,7 @@
 @include('layouts.nav')
 
 <div class="container mx-auto">
-    <div class="flex gap-5 about-container">
+    <div class="flex gap-5 flex-column lg:flex-row about-container">
         <div class="flex-1 pr-5">
             <img src="{{route('index.index')}}{{$about?->image_path1}}">
         </div>
@@ -11,7 +11,7 @@
             <p>{{$about?->description}}</p>
         </div>
     </div>
-    <div class="relative columns-4 sm:columns-4 gap-8">
+    <div class="flex justify-between flex-column lg:flex-row relative columns-1 lg:columns-4 gap-8">
         <img class="w-full object-cover aspect-square rounded-lg" src="{{route('index.index')}}{{$about?->image_path2}}">
         <img class="w-full object-cover aspect-square rounded-lg" src="{{route('index.index')}}{{$about?->image_path3}}">
         <img class="w-full object-cover aspect-square rounded-lg" src="{{route('index.index')}}{{$about?->image_path4}}">

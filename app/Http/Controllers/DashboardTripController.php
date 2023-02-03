@@ -66,7 +66,7 @@ class DashboardTripController extends Controller
     }
 
     public function storeImage($request, $image, $iteration) {
-        $newImageName = uniqid() . '-' . $request->name . $iteration .'.' . $image->extension();
+        $newImageName = uniqid() . '-' . explode(' ',trim($request->title))[0] . $iteration .'.' . $image->extension();
         
         return $image->move(public_path('images/trips'), $newImageName);
     }

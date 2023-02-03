@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\Trip;
 use App\Models\Country;
 use App\Models\Location;
+use App\Models\Booking;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class DashboardBookingController extends Controller
     {
         $trips = Trip::orderBy('updated_at', 'desc')->paginate(5);
         $countries = Country::get();
+        $bookings = Booking::get();
         $locations = Location::get();
         $types = Type::get();
 
@@ -29,6 +31,7 @@ class DashboardBookingController extends Controller
         } else {
             return view('admin.bookings.index', [
                 'trips' => $trips,
+                'bookings' => $bookings,
                 'countries' => $countries,
                 'locations' => $locations,
                 'types' => $types
@@ -99,6 +102,7 @@ class DashboardBookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Booking::destroy($id);
+        return redirect(route('admin.booking.index'))->with('message', 'Booking has been deleted');
     }
 }

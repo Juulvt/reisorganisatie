@@ -46,6 +46,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Trip::class);
     }
 
+    public function bookings() {
+        return $this->hasMany(Booking::class);
+    }
+
     public function roles() {
         return $this->belongsToMany(Role::class);
     }
@@ -54,4 +58,5 @@ class User extends Authenticatable
         if($this->roles->contains('name', $role))  return true;
         else return false;
       }
+
 }

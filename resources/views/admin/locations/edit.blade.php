@@ -131,7 +131,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="inline-block bg-main w-32 py-3 font-bold rounded text-white mt-3" type="submit">Edit</button>
+                    <button class="inline-block bg-main w-32 mt-2 py-3 font-bold rounded text-white mt-3" type="submit">Edit</button>
                 </form>
             </div>
         </div>

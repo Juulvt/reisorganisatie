@@ -41,7 +41,7 @@
                             " type="text" id="name" name="name" value='{{$role->name}}'>
                         </div>
                     </div>
-                    <button class="inline-block bg-main w-28 py-2.5 font-bold rounded text-white mt-3" type="submit">Edit</button>
+                    <button class="inline-block bg-main w-28 mt-2 py-2.5 font-bold rounded text-white mt-3" type="submit">Edit</button>
                 </form>
             </div>
         </div>

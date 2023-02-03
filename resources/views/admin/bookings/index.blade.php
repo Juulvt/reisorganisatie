@@ -7,27 +7,8 @@
         @include('layouts.admin-sidenav')
         <div class="p-5 basis-5/6">
             <div class="bg-white rounded-lg shadow-sm p-5">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl">Trips</h2>
-                </div>
-                <div class="flex justify-end gap-3 py-3">
-                    <div class="basis-1/4">
-                        <label>Country</label>
-                        <select class="rounded bg-slate-100" name="location" id="location">
-                            @foreach ($countries as $country)
-                                <option value={{$country->name}}>{{$country->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="basis-1/4">
-                        <label for="firstname">Trip</label>
-                        <input class="placeholder-slate-400 bg-slate-100
-                        focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                        invalid:border-pink-500 invalid:text-pink-600
-                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-                        " type="text" id="tripname" name="tripname" placeholder="Enter trip name...">
-                    </div>
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-xl">Bookings</h2>
                 </div>
                 @if (!empty($bookings))
                 <table class="w-full rounded-lg overflow-hidden">
@@ -41,19 +22,24 @@
                         <th>End Date</th>
                         <th></th>
                     </tr>
+                    @foreach ($bookings as $booking)
                     <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                        <td class="text-right min-w-fit">
-                            <div class="btn btn-secondary w-1/3 min-w-fit">Edit</div>
-                            <div class="btn btn-remove w-1/3 min-w-fit">Remove</div>
+                        <td>{{$booking->id}}</td>
+                        <td>{{$booking->trip->name}}</td>
+                        <td>{{$booking->trip->accomodation->location->name}}</td>
+                        <td>{{$booking->trip->accomodation->location->country->name}}</td>
+                        <td>{{$booking->user->name}}</td>
+                        <td>{{$booking->startdate}}</td>
+                        <td>{{$booking->enddate}}</td>
+                        <td>
+                        <form class="inline-block w-1/3 min-w-fit confirm-delete hidden" action="{{ route('admin.booking.destroy', $booking->id) }}" method="POST" id="booking{{$booking->id}}">
+                        @csrf
+                        @method('DELETE')
+                        </form>
+                        <button class="btn btn-remove inline-block w-1/3 min-w-fit show-alert-delete-box" data-id="{{ $booking->id }}" data-action="{{ route('admin.booking.destroy',$booking->id) }}" onclick="deleteConfirmation('booking{{$booking->id}}')"> Delete</button>
                         </td>
                     </tr>
+                    @endforeach
                 </table>
                 @else
                 <p>No Bookings</p>

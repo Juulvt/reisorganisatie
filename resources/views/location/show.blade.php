@@ -14,7 +14,7 @@
     </div>
 </div>
 <div class="container mx-auto mb-5 h-fit p-5 bg-white rounded-xl relative shadow-md">
-    <div class="flex justify-between items-start flex-wrap gap-5 relative mb-5">
+    <div class="flex justify-between items-start flex-wrap flex-column lg:flex-row gap-5 relative mb-5">
         <div class="flex-1 py-3">
             <h1>{{$location->name}}</h1>
             <p>{{$location->description}}</p>
@@ -25,25 +25,12 @@
             @endforeach
         </div>
     </div>
-    <div class="grid grid-cols-3 grid-rows-1 gap-x-3 h-48 overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-1 gap-x-3 h-48 overflow-hidden">
         @foreach ($location->images->slice(0, 4) as $image)
         <div class="">
             <img src={{$image->image_path}}>
         </div>
         @endforeach
-    </div>
-</div>
-
-<div class="container mx-auto mb-5 h-fit p-5 bg-white rounded-xl relative shadow-md">
-    <div>
-        <h3 class="mb-3">Trips in this location</h3>
-        <div class="grid grid-cols-3 grid-rows-1 gap-x-3 h-48 overflow-hidden">
-            @foreach ($location->images->slice(0, 4) as $image)
-            <div class="">
-                <img src={{$image->image_path}}>
-            </div>
-            @endforeach
-        </div>
     </div>
 </div>
 

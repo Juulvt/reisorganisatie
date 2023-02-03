@@ -26,7 +26,7 @@
     <meta name="msapplication-TileImage" content="{{ route('index.index') }}/images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#2C8FF2">
 
-    @vite('resources/css/app.css')
+    
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,13 +36,10 @@
     <!--  dropbox CDN  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
 
-    <!-- flowbite CDN -->
-    <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
-
-    <!-- sweetalert2 CND -->
+    <!-- sweetalert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
+<body class="relative">

@@ -1,5 +1,5 @@
 <footer class="pt-4 mt-5">
-    <div class="container mx-auto flex flex-wrap gap-1 pb-4">
+    <div class="container mx-auto flex flex-col lg:flex-row flex-wrap gap-1 pb-4">
         <div class="flex-1">
             <h2>Locatie</h2>
             <ul class="pl-0">
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="footer-extend py-2">
-        <div class="container">
+        <div class="container mx-auto">
             <a href={{ route('privacy.index') }}>Privacy Policy</a>
             <a href={{ route('terms.index') }}>Terms & Conditions</a>
         </div>

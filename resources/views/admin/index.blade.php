@@ -10,44 +10,30 @@
                 <div class="basis-3/5 grid grid-cols-2 grid-rows-2 gap-3">
                     <div class="bg-white rounded-lg shadow-sm p-5 pb-3">
                         <h3 class="text-lg">Trips</h3>
-                        <span>31</span>
+                        <span>{{$trips->count()}}</span>
                     </div>
                     <div class="bg-white rounded-lg shadow-sm p-5 pb-3">
                         <h3 class="text-lg">Revenue</h3>
-                        <span>€10.200</span>
+                        <span>€{{$revenue}}</span>
                     </div>
                     <div class="bg-white rounded-lg shadow-sm p-5 pb-3">
                         <h3 class="text-lg">Bookings</h3>
-                        <span>221</span>
+                        <span>{{$bookings->count()}}</span>
                     </div>
                     <div class="bg-white rounded-lg shadow-sm p-5 pb-3">
                         <h3 class="text-lg">Users</h3>
-                        <span>{{count($users)}}</span>
+                        <span>{{$users->count()}}</span>
                     </div>
                 </div>
                 <div class="basis-2/5 bg-white rounded-lg shadow-sm p-5">
                     <h2 class="text-xl">Newest Members</h2>
                     <table>
+                        @foreach ($users as $user)
                         <tr>
-                            <td>Juul van Tilburg</td>
-                            <td>jt@gmail.com</td>
+                            <td>{{$user?->name}}</td>
+                            <td>{{$user?->email}}</td>
                         </tr>
-                        <tr>
-                            <td>Juul van Tilburg</td>
-                            <td>jt@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>Juul van Tilburg</td>
-                            <td>jt@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>Juul van Tilburg</td>
-                            <td>jt@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>Juul van Tilburg</td>
-                            <td>jt@gmail.com</td>
-                        </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
@@ -63,60 +49,17 @@
                         <th>Starting Date</th>
                         <th>End Date</th>
                     </tr>
+                    @foreach ($bookings as $booking)
                     <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
+                        <td>{{$booking->id}}</td>
+                        <td>{{$booking->trip->name}}</td>
+                        <td>{{$booking->trip->accomodation->location->name}}</td>
+                        <td>{{$booking->trip->accomodation->location->country->name}}</td>
+                        <td>{{$booking->user->name}}</td>
+                        <td>{{$booking->startdate}}</td>
+                        <td>{{$booking->enddate}}</td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tripje naar Amsterdam</td>
-                        <td>Amsterdam</td>
-                        <td>Nederland</td>
-                        <td>Juul van Tilburg</td>
-                        <td>03-12-2023</td>
-                        <td>23-12-2023</td>
-                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
